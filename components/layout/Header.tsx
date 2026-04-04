@@ -65,6 +65,34 @@ function DesktopNav() {
   );
 }
 
+// ─── Mobile Quick Nav ─────────────────────────────────────────────────────────
+
+function MobileQuickNav() {
+  const quickLinks = [
+    { label: "Planes", href: "/#servicios" },
+    { label: "Testimonios", href: "/#resultados" },
+    { label: "Contacto", href: "/#contacto" },
+  ];
+
+  return (
+    <div className="flex items-center gap-2 lg:hidden">
+      {quickLinks.map(({ label, href }) => (
+        <a
+          key={href}
+          href={href}
+          className={cn(
+            "rounded-full px-3 py-1.5",
+            "font-sans text-xs font-medium text-brand-gray",
+            "transition-colors duration-200 hover:bg-brand-muted/60 hover:text-brand-dark",
+          )}
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 // ─── CTA ─────────────────────────────────────────────────────────────────────
 
 function NavCTA() {
@@ -187,6 +215,7 @@ export default function Header() {
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
         <DesktopNav />
+        <MobileQuickNav />
         <div className="flex items-center gap-3">
           <NavCTA />
 
