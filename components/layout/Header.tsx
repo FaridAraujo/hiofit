@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { label: "Inicio",    href: "/"           },
   { label: "Nosotros",  href: "/nosotros"   },
   { label: "Servicios", href: "/#servicios" },
-  { label: "Planes",    href: "/#planes"    },
   { label: "Contacto",  href: "/#contacto"  },
 ] as const;
 
@@ -69,7 +68,7 @@ function DesktopNav() {
 
 function MobileQuickNav() {
   const quickLinks = [
-    { label: "Planes", href: "/#servicios" },
+    { label: "Servicios", href: "/#servicios" },
     { label: "Testimonios", href: "/#resultados" },
     { label: "Contacto", href: "/#contacto" },
   ];
