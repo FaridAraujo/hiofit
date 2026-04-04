@@ -33,7 +33,7 @@ function Logo() {
         className="h-9 w-9 object-contain"
         priority
       />
-      <span className="font-display text-xl font-bold tracking-tight text-brand-dark">
+      <span className="font-display text-xl font-bold tracking-tight text-black">
         Hio<span className="text-brand-red">Fit</span>
       </span>
     </Link>
