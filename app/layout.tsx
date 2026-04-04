@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { inter, sora } from "@/styles/fonts";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 import "@/app/globals.css";
 
 /* ── Metadata ───────────────────────────────────────────── */
@@ -44,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${sora.variable}`}>
       <body>
+        <ScrollProgress />
         <Header />
         {children}
         <Footer />

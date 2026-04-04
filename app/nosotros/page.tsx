@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import BlurImage from "@/components/ui/BlurImage";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -90,7 +90,7 @@ export default function NosotrosPage() {
 
                 {/* Foto */}
                 <div className="relative overflow-hidden rounded-2xl aspect-[3/4] lg:aspect-auto lg:min-h-[600px] bg-brand-muted">
-                  <Image
+                  <BlurImage
                     src={coach.image}
                     alt={coach.name}
                     fill
