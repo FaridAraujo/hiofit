@@ -67,7 +67,6 @@ function StepCard({
           transition={{
             duration: 0.8,
             delay: 0.3 + index * 0.15,
-            ease: [0.16, 1, 0.3, 1],
           }}
           className="absolute top-[1.75rem] hidden origin-left lg:block"
           style={{
@@ -85,7 +84,7 @@ function StepCard({
           initial={{ scale: 0.8, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.4, delay: index * 0.15 }}
           className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-brand-muted bg-brand-base text-brand-red"
         >
           {step.icon}
