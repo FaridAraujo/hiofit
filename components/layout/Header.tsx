@@ -34,7 +34,7 @@ function Logo() {
         priority
       />
       <span className="font-display text-xl font-bold tracking-tight text-black">
-        Hio<span className="text-brand-red">Fit</span>
+        HioFit
       </span>
     </Link>
   );
