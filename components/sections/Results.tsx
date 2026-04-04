@@ -123,7 +123,7 @@ function TestimonialCard({
       className="flex flex-col gap-6 rounded-2xl bg-white/[0.06] p-8 ring-1 ring-white/10"
     >
       <span aria-hidden className="font-display text-5xl font-bold leading-none text-brand-red/60">
-        "
+        &quot;
       </span>
 
       <p className="font-sans text-sm leading-relaxed text-white/80">

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -19,7 +20,7 @@ const NAV_LINKS = [
 
 function Logo() {
   return (
-    <a
+    <Link
       href="/"
       aria-label="HioFit — Inicio"
       className="flex items-center gap-2.5 focus-visible:outline-none"
@@ -35,7 +36,7 @@ function Logo() {
       <span className="font-display text-xl font-bold tracking-tight text-brand-dark">
         Hio<span className="text-brand-red">Fit</span>
       </span>
-    </a>
+    </Link>
   );
 }
 

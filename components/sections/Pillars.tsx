@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { staggerContainer, fadeUp } from "@/lib/motion";
-import { cn } from "@/lib/utils";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 

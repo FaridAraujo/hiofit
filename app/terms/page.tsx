@@ -24,14 +24,14 @@ export default function TermsPage() {
         <div className="prose prose-sm max-w-none prose-headings:font-display prose-headings:text-brand-dark prose-p:text-brand-gray prose-a:text-brand-red hover:prose-a:text-brand-red/80 prose-strong:text-brand-dark">
           <h2>Información General</h2>
           <p>
-            Este sitio web es operado por Hiofit. En todo el sitio, los términos "nosotros", "nos" y "nuestro" se
+            Este sitio web es operado por Hiofit. En todo el sitio, los términos &quot;nosotros&quot;, &quot;nos&quot; y &quot;nuestro&quot; se
             refieren a Hiofit. Hiofit ofrece este sitio web, incluyendo toda la información, herramientas y servicios
             disponibles para ti en este sitio, el usuario, está condicionado a la aceptación de todos los términos,
             condiciones, políticas y notificaciones aquí establecidos.
           </p>
           <p>
-            Al visitar nuestro sitio y/o comprar algo de nosotros, participas en nuestro "Servicio" y aceptas los
-            siguientes términos y condiciones ("Términos de Servicio", "Términos"), incluyendo todos los términos y
+            Al visitar nuestro sitio y/o comprar algo de nosotros, participas en nuestro &quot;Servicio&quot; y aceptas los
+            siguientes términos y condiciones (&quot;Términos de Servicio&quot;, &quot;Términos&quot;), incluyendo todos los términos y
             condiciones adicionales y las políticas a las que se hace referencia en el presente documento y/o disponible
             a través de hipervínculos. Estas Condiciones de Servicio se aplican a todos los usuarios del sitio,
             incluyendo sin limitación a usuarios que sean navegadores, proveedores, clientes, comerciantes y/o

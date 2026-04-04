@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
@@ -47,7 +48,7 @@ export default function Footer() {
 
           {/* Brand col */}
           <div className="flex flex-col gap-5">
-            <a href="/" aria-label="HioFit" className="flex w-fit items-center gap-2.5">
+            <Link href="/" aria-label="HioFit" className="flex w-fit items-center gap-2.5">
               <Image
                 src="/logo.png"
                 alt="HioFit"
@@ -58,7 +59,7 @@ export default function Footer() {
               <span className="font-display text-xl font-bold tracking-tight text-white">
                 Hio<span className="text-brand-red">Fit</span>
               </span>
-            </a>
+            </Link>
 
             <p className="max-w-xs font-sans text-sm leading-relaxed text-white/40">
               {/* TODO: actualizar tagline con el cliente */}
