@@ -56,12 +56,12 @@ const slideVariants = {
   center: {
     x: 0,
     opacity: 1,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
   exit: (dir: number) => ({
     x: dir > 0 ? "-100%" : "100%",
     opacity: 0,
-    transition: { duration: 0.3, ease: [0.4, 0, 1, 1] },
+    transition: { duration: 0.3, ease: "easeIn" },
   }),
 };
 
@@ -103,7 +103,7 @@ function CoachModal({ coach, onClose }: { coach: Coach; onClose: () => void }) {
         initial={{ y: 48, opacity: 0, scale: 0.97 }}
         animate={{ y: 0,  opacity: 1, scale: 1 }}
         exit={{   y: 24,  opacity: 0, scale: 0.98 }}
-        transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.38, ease: "easeOut" }}
       >
         {/* Header oscuro: foto + nombre */}
         <div className="relative flex items-center gap-5 bg-brand-dark p-6">
