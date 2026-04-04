@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base resets ─────────────────────────────────────────── */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* @apply no puede resolver colores custom de theme.extend dentro de @layer base.
+       Se usan propiedades CSS directas — práctica recomendada por Tailwind para body. */
+    @apply font-sans;
+    background-color: #F7F6F4; /* brand.base */
+    color: #111111;             /* brand.dark */
+    min-height: 100dvh;
+  }
+
+  /*
+   * Grain en fondo claro — opacidad muy reducida vs. dark mode (0.018 vs 0.038).
+   * En claro funciona como textura de papel premium (Goop, Alo Yoga, Arc).
+   * A esta opacidad es imperceptible en screenshots pero se siente en pantalla.
+   */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  }
+
+  /* Focus ring — accessible & on-brand */
+  :focus-visible {
+    @apply outline-none ring-2 ring-[#FF0000] ring-offset-2 ring-black;
+  }
+
+  /* Remove default list styles when inside nav/menu */
+  nav ul,
+  nav ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* ── Utility layer ───────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient text helper */
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-red to-brand-dark bg-clip-text text-transparent;
+  }
+
+  /* Section spacing — keeps vertical rhythm consistent */
+  .section-padding {
+    @apply px-4 py-20 sm:px-6 lg:px-8 lg:py-32;
+  }
+
+  /* Max-width container */
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl;
+  }
+}
