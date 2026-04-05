@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils";
 const NAV_LINKS = [
   { label: "Inicio",    href: "/"           },
   { label: "Nosotros",  href: "/nosotros"   },
-  { label: "Servicios", href: "/#servicios" },
-  { label: "Contacto",  href: "/#contacto"  },
+  { label: "Servicios", href: "/servicios"  },
+  { label: "Contacto",  href: "/contacto"   },
 ] as const;
 
 // ─── Logo ─────────────────────────────────────────────────────────────────────
@@ -68,9 +68,9 @@ function DesktopNav() {
 
 function MobileQuickNav() {
   const quickLinks = [
-    { label: "Servicios", href: "/#servicios" },
+    { label: "Servicios", href: "/servicios" },
     { label: "Testimonios", href: "/#resultados" },
-    { label: "Contacto", href: "/#contacto" },
+    { label: "Contacto", href: "/contacto" },
   ];
 
   return (

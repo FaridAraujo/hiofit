@@ -9,7 +9,7 @@ const NAV_COLUMNS = [
     links: [
       { label: "Inicio",    href: "/" },
       { label: "Nosotros",  href: "/nosotros" },
-      { label: "Servicios", href: "/#servicios" },
+      { label: "Servicios", href: "/servicios" },
       { label: "Proceso",   href: "/#proceso" },
       { label: "Resultados",href: "/#resultados" },
     ],
