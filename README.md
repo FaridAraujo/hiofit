@@ -83,10 +83,30 @@ npm run build
 npm run start
 ```
 
-## Roadmap (Phase 2 — Pending client approval)
+## Roadmap
 
-- Auth with NextAuth.js + Supabase
-- Stripe payments integration
-- Admin dashboard and client portal
+### Phase 2 — Web Platform (Pending client approval)
+- Authentication with NextAuth.js + Supabase
+- Stripe payments integration and subscription management
+- Admin dashboard for business management
+- Client portal with personal account access
 - Row Level Security (RLS) and RBAC roles
-- React Native + Expo mobile app
+- JWT refresh rotation and webhook handling
+
+### Phase 3 — Mobile App + Full Backend (Planned)
+- React Native + Expo mobile app for iOS and Android
+- PostgreSQL as primary database for clients, payments,
+  subscriptions, and workout data
+- Client-coach messaging system with real-time chat
+- Workout routine builder — coaches assign custom routines
+  per client with sets, reps, and progression tracking
+- Exercise library with video demonstrations stored
+  and served via cloud storage (S3 or Supabase Storage)
+- Progress tracking — body metrics, workout history,
+  and performance charts over time
+- Interactive calendar for session scheduling and
+  appointment management
+- Push notifications for session reminders, new routines,
+  and coach messages
+- Synchronized data between web platform and mobile app
+  via shared REST API or Supabase Realtime
