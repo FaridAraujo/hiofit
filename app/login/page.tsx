@@ -20,7 +20,7 @@ const EASE_OUT: [number, number, number, number] = [0.23, 1, 0.32, 1];
 const panelVariants = {
   hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.22, ease: EASE_OUT } },
-  exit:   { opacity: 0, y: -6, transition: { duration: 0.16, ease: "easeIn" } },
+  exit:   { opacity: 0, y: -6, transition: { duration: 0.16, ease: [0.4, 0, 1, 1] as [number, number, number, number] } },
 };
 
 function fieldDelay(i: number) {
