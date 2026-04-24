@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 
@@ -95,18 +97,67 @@ function MobileQuickNav() {
 // ─── CTA ─────────────────────────────────────────────────────────────────────
 
 function NavCTA() {
+  const { isLoggedIn, userName, hasPlan, logout } = useAuth();
+
   return (
-    <a
-      href="#contacto"
-      className={cn(
-        "hidden lg:inline-flex",
-        "rounded-full bg-brand-red px-5 py-2",
-        "font-sans text-sm font-semibold text-white",
-        "transition-shadow duration-300 hover:shadow-[0_4px_16px_rgba(255,0,0,0.25)]",
+    <div className="hidden lg:flex items-center gap-2">
+      {isLoggedIn ? (
+        <>
+          {/* Nombre del usuario — sin avatar */}
+          <span className="font-sans text-sm font-medium text-brand-dark">
+            {userName}
+          </span>
+
+          <span className="h-4 w-px bg-brand-muted" />
+
+          {/* Condicional: tiene plan o no */}
+          <Link
+            href="/planes"
+            className={cn(
+              "rounded-full px-4 py-2",
+              "font-sans text-sm font-medium text-brand-gray",
+              "transition-colors duration-200 hover:bg-brand-muted/60 hover:text-brand-dark",
+            )}
+          >
+            {hasPlan ? "Mi plan" : "Adquirir planes"}
+          </Link>
+
+          <button
+            onClick={logout}
+            className={cn(
+              "rounded-full px-4 py-2",
+              "font-sans text-sm font-medium text-brand-gray",
+              "transition-colors duration-200 hover:bg-brand-muted/60 hover:text-brand-dark",
+            )}
+          >
+            Salir
+          </button>
+        </>
+      ) : (
+        <>
+          <Link
+            href="/login"
+            className={cn(
+              "rounded-full px-4 py-2",
+              "font-sans text-sm font-medium text-brand-gray",
+              "transition-colors duration-200 hover:bg-brand-muted/60 hover:text-brand-dark",
+            )}
+          >
+            Ingresar
+          </Link>
+          <Link
+            href="/planes"
+            className={cn(
+              "rounded-full bg-brand-red px-5 py-2",
+              "font-sans text-sm font-semibold text-white",
+              "transition-shadow duration-300 hover:shadow-[0_4px_16px_rgba(255,0,0,0.25)]",
+            )}
+          >
+            Comenzar
+          </Link>
+        </>
       )}
-    >
-      Comenzar
-    </a>
+    </div>
   );
 }
 
@@ -143,6 +194,8 @@ function MobileMenu({
   open: boolean;
   onClose: () => void;
 }) {
+  const { isLoggedIn, userName, hasPlan, logout } = useAuth();
+
   return (
     <AnimatePresence>
       {open && (
@@ -165,14 +218,45 @@ function MobileMenu({
               </a>
             ))}
           </nav>
-          <div className="mt-4 border-t border-brand-muted pt-4">
-            <a
-              href="#contacto"
-              onClick={onClose}
-              className="flex w-full items-center justify-center rounded-full bg-brand-red py-3 font-sans text-sm font-semibold text-white"
-            >
-              Comenzar ahora
-            </a>
+
+          <div className="mt-4 flex flex-col gap-2 border-t border-brand-muted pt-4">
+            {isLoggedIn ? (
+              <>
+                <p className="px-4 py-1 font-sans text-sm font-medium text-brand-dark">
+                  {userName}
+                </p>
+                <Link
+                  href="/planes"
+                  onClick={onClose}
+                  className="flex w-full items-center justify-center rounded-full bg-brand-red py-3 font-sans text-sm font-semibold text-white"
+                >
+                  {hasPlan ? "Mi plan" : "Adquirir planes"}
+                </Link>
+                <button
+                  onClick={() => { logout(); onClose(); }}
+                  className="flex w-full items-center justify-center rounded-full border border-brand-muted py-3 font-sans text-sm font-medium text-brand-dark transition-colors hover:bg-brand-muted/50"
+                >
+                  Cerrar sesión
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  onClick={onClose}
+                  className="flex w-full items-center justify-center rounded-full border border-brand-muted py-3 font-sans text-sm font-medium text-brand-dark transition-colors hover:bg-brand-muted/50"
+                >
+                  Ingresar a mi cuenta
+                </Link>
+                <Link
+                  href="/planes"
+                  onClick={onClose}
+                  className="flex w-full items-center justify-center rounded-full bg-brand-red py-3 font-sans text-sm font-semibold text-white"
+                >
+                  Comenzar ahora
+                </Link>
+              </>
+            )}
           </div>
         </motion.div>
       )}
@@ -182,7 +266,11 @@ function MobileMenu({
 
 // ─── Header ───────────────────────────────────────────────────────────────────
 
+// Rutas donde el Header no debe aparecer (auth pages)
+const AUTH_ROUTES = ["/login", "/register"];
+
 export default function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled]   = useState(false);
   const [menuOpen, setMenuOpen]   = useState(false);
 
@@ -201,6 +289,9 @@ export default function Header() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  // No renderizar en páginas de auth — DESPUÉS de todos los hooks
+  if (AUTH_ROUTES.includes(pathname)) return null;
 
   return (
     <header

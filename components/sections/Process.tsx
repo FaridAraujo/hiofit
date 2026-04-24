@@ -48,35 +48,12 @@ const STEPS = [
 function StepCard({
   step,
   index,
-  isLast,
 }: {
   step: (typeof STEPS)[number];
   index: number;
-  isLast: boolean;
 }) {
   return (
-    <div className="relative flex flex-col gap-5">
-
-      {/* Línea conectora animada — se dibuja de izquierda a derecha */}
-      {!isLast && (
-        <motion.div
-          aria-hidden
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{
-            duration: 0.8,
-            delay: 0.3 + index * 0.15,
-          }}
-          className="absolute top-[1.75rem] hidden origin-left lg:block"
-          style={{
-            left:  "calc(100% + 1rem)",
-            width: "calc(100% - 2rem)",
-            height: "1px",
-            background: "linear-gradient(to right, #FF000033, #E5E3DF)",
-          }}
-        />
-      )}
+    <div className="flex flex-col gap-5">
 
       {/* Ícono + número */}
       <div className="flex items-center gap-3">
@@ -148,7 +125,7 @@ export default function Process() {
         >
           {STEPS.map((step, i) => (
             <motion.div key={step.number} variants={fadeUp}>
-              <StepCard step={step} index={i} isLast={i === STEPS.length - 1} />
+              <StepCard step={step} index={i} />
             </motion.div>
           ))}
         </motion.div>
