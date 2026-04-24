@@ -81,33 +81,42 @@ All icons as inline SVG — no external icon dependency.
 
 ## Architecture
 
-hiofit/
-├── app/
-│   ├── layout.tsx            # Root layout with AuthProvider
-│   ├── page.tsx              # Homepage
-│   ├── login/                # Auth pages (no Header/Footer)
-│   ├── planes/               # Plan selection (auth-aware)
-│   ├── servicios/
-│   ├── nosotros/
-│   ├── contacto/
-│   └── privacy/ terms/ refunds/
-├── components/
-│   ├── layout/               # Header, Footer
-│   ├── sections/             # Homepage sections
-│   └── ui/                   # ScrollProgress, BlurImage
-├── contexts/
-│   └── AuthContext.tsx       # Mock auth state (localStorage)
-└── lib/
-    ├── motion.ts             # Framer Motion presets
-    └── utils.ts              # cn() utility
+Estructura de carpetas:
 
-- Server Components for layout and static sections
-- Client Components only where interactivity is required
-- Reusable motion presets in lib/motion.ts (fadeUp, fadeIn, staggerContainer, scaleIn)
-- BlurImage wrapper over next/image with blur-md + scale transition on load
-- ScrollProgress with spring physics fixed at top of viewport
-- Header and Footer hidden on auth routes via usePathname()
-- All hooks called before any conditional returns (Rules of Hooks compliant)
+  hiofit/
+  |
+  +-- app/
+  |     +-- layout.tsx          (Root layout con AuthProvider)
+  |     +-- page.tsx            (Homepage)
+  |     +-- login/              (Paginas de auth — sin Header/Footer)
+  |     +-- planes/             (Seleccion de plan — auth-aware)
+  |     +-- servicios/
+  |     +-- nosotros/
+  |     +-- contacto/
+  |     +-- privacy/
+  |     +-- terms/
+  |     +-- refunds/
+  |
+  +-- components/
+  |     +-- layout/             (Header, Footer)
+  |     +-- sections/           (Secciones del Homepage)
+  |     +-- ui/                 (ScrollProgress, BlurImage)
+  |
+  +-- contexts/
+  |     +-- AuthContext.tsx     (Mock auth state con localStorage)
+  |
+  +-- lib/
+        +-- motion.ts           (Presets de Framer Motion)
+        +-- utils.ts            (Utilidad cn())
+
+Decisiones de arquitectura:
+- Server Components para layout y secciones estaticas
+- Client Components solo donde se requiere interactividad
+- Presets de motion reutilizables: fadeUp, fadeIn, staggerContainer, scaleIn
+- BlurImage: wrapper sobre next/image con transicion blur-md + scale al cargar
+- ScrollProgress con spring physics fijo al top del viewport
+- Header y Footer ocultos en rutas de auth via usePathname()
+- Todos los hooks se llaman antes de cualquier return condicional (Rules of Hooks)
 
 ## Security model
 
